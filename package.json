@@ -1,5 +1,6 @@
 {
   "name": "music-normalizr",
+  "description": "Normalize audio file name and complete ID3 Tag from an external API",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +15,8 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
