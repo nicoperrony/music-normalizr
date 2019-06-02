@@ -1,15 +1,40 @@
 <template>
   <div id="app">
-    <h1>Music Normalizr</h1>
+    <v-app>
+      <v-navigation-drawer value="true" dark mini-variant hide-overlay stateless absolute>
+        <v-list class="pt-0" dense>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-icon>menu</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
 
-    <p>
-      <router-link to="/">Normalizer</router-link>
-      <router-link to="/settings">Settings</router-link>
-    </p>
+          <v-divider light></v-divider>
 
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
+          <v-list-tile to="/">
+            <v-list-tile-action>
+              <v-icon>library_music</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+
+          <v-list-tile to="/settings">
+            <v-list-tile-action>
+              <v-icon>settings</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-content>
+        <v-container fluid fill-height>
+          <v-layout justify-center align-center>
+            <transition name="fade" mode="out-in">
+              <router-view></router-view>
+            </transition>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
@@ -21,19 +46,6 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-a {
-  padding: 5px;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
