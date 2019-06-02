@@ -3,17 +3,18 @@ import VueRouter from "vue-router";
 import App from "./App.vue";
 import Vuetify, {
   VApp,
+  VBadge,
   VContent,
   VContainer,
   VDivider,
-  VNavigationDrawer,
   VIcon,
   VLayout,
   VList,
   VListTile,
   VListTileTitle,
   VListTileContent,
-  VListTileAction
+  VListTileAction,
+  VNavigationDrawer
 } from "vuetify/lib";
 import { Router } from "./router";
 
@@ -25,17 +26,18 @@ Vue.use(VueRouter);
 Vue.use(Vuetify, {
   components: {
     VApp,
+    VBadge,
     VContent,
     VContainer,
     VDivider,
-    VNavigationDrawer,
     VIcon,
     VLayout,
     VList,
     VListTile,
     VListTileTitle,
     VListTileContent,
-    VListTileAction
+    VListTileAction,
+    VNavigationDrawer
   }
 });
 
