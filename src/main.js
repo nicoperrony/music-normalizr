@@ -4,9 +4,12 @@ import App from "./App.vue";
 import Vuetify, {
   VApp,
   VBadge,
+  VBtn,
+  VCard,
   VContent,
   VContainer,
   VDivider,
+  VFlex,
   VIcon,
   VLayout,
   VList,
@@ -14,11 +17,13 @@ import Vuetify, {
   VListTileTitle,
   VListTileContent,
   VListTileAction,
-  VNavigationDrawer
+  VNavigationDrawer,
+  VTextField
 } from "vuetify/lib";
 import { Router } from "./router";
 
 import "vuetify/src/stylus/app.styl";
+import { DISCOGS_KEY, DISCOGS_SECRET, FILE_NAME_PATTERN } from "./storage";
 
 Vue.config.productionTip = false;
 
@@ -27,9 +32,12 @@ Vue.use(Vuetify, {
   components: {
     VApp,
     VBadge,
+    VBtn,
+    VCard,
     VContent,
     VContainer,
     VDivider,
+    VFlex,
     VIcon,
     VLayout,
     VList,
@@ -37,7 +45,8 @@ Vue.use(Vuetify, {
     VListTileTitle,
     VListTileContent,
     VListTileAction,
-    VNavigationDrawer
+    VNavigationDrawer,
+    VTextField
   }
 });
 
@@ -45,3 +54,10 @@ new Vue({
   router: Router,
   render: h => h(App)
 }).$mount("#app");
+
+localStorage.setItem(DISCOGS_KEY, "sdzUjQTGFfPrePmXrYcY");
+localStorage.setItem(DISCOGS_SECRET, "yUZTmWvDqWjozLldGXrpmBtzuYqLXcrh");
+localStorage.setItem(
+  FILE_NAME_PATTERN,
+  "[track-num]. [artist] feat [featuring] - [title]"
+);

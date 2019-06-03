@@ -39,10 +39,12 @@
       </v-navigation-drawer>
 
       <v-content>
-        <v-layout fill-height justify-center align-center>
-          <transition name="fade" mode="out-in">
-            <router-view></router-view>
-          </transition>
+        <v-layout fill-height fluid class="pa-3">
+          <v-flex>
+            <transition name="fade" mode="out-in">
+              <router-view></router-view>
+            </transition>
+          </v-flex>
         </v-layout>
       </v-content>
     </v-app>
@@ -55,10 +57,13 @@ import { DISCOGS_KEY, DISCOGS_SECRET } from "./storage";
 export default {
   name: "app",
   components: {},
-  data: () => ({
-    hasSettings: () =>
-      localStorage.getItem(DISCOGS_KEY) && localStorage.getItem(DISCOGS_SECRET)
-  })
+  data() {
+    return {
+      hasSettings: () =>
+        localStorage.getItem(DISCOGS_KEY) &&
+        localStorage.getItem(DISCOGS_SECRET)
+    };
+  }
 };
 </script>
 
