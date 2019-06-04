@@ -1,18 +1,23 @@
 <template>
   <form>
-    <h2>Settings</h2>
+    <v-card ref="form">
+      <v-toolbar card prominent>
+        <v-toolbar-title class="body-2 grey--text">Settings</v-toolbar-title>
+      </v-toolbar>
 
-    <v-text-field
-      v-model="fileNamePattern"
-      :error-messages="fileNamePatternErrors"
-      label="File Name Pattern"
-      :full-width="true"
-      required
-      @input="$v.fileNamePattern.$touch()"
-      @blur="$v.fileNamePattern.$touch()"
-    ></v-text-field>
+      <v-card-text>
+        <v-text-field
+          label="File Name Pattern"
+          v-model="fileNamePattern"
+          :error-messages="fileNamePatternErrors"
+          :full-width="true"
+          @input="$v.fileNamePattern.$touch()"
+          @blur="$v.fileNamePattern.$touch()"
+        ></v-text-field>
 
-    <v-btn @click="save" :disabled="this.$v.$invalid">Save</v-btn>
+        <v-btn @click="save" :disabled="this.$v.$invalid">Save</v-btn>
+      </v-card-text>
+    </v-card>
   </form>
 </template>
 

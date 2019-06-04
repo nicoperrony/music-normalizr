@@ -4,6 +4,7 @@ import Vuetify, {
   VBadge,
   VBtn,
   VCard,
+  VCardText,
   VContent,
   VContainer,
   VDivider,
@@ -16,7 +17,10 @@ import Vuetify, {
   VListTileContent,
   VListTileAction,
   VNavigationDrawer,
-  VTextField
+  VTextField,
+  VToolbar,
+  VToolbarSideIcon,
+  VToolbarTitle
 } from "vuetify/lib";
 import "vuetify/src/stylus/app.styl";
 
@@ -26,6 +30,7 @@ Vue.use(Vuetify, {
     VBadge,
     VBtn,
     VCard,
+    VCardText,
     VContent,
     VContainer,
     VDivider,
@@ -38,6 +43,9 @@ Vue.use(Vuetify, {
     VListTileContent,
     VListTileAction,
     VNavigationDrawer,
-    VTextField
+    VTextField,
+    VToolbar,
+    VToolbarSideIcon,
+    VToolbarTitle
   }
 });
