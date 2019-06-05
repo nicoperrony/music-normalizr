@@ -18,6 +18,14 @@
         <v-btn @click="save" :disabled="this.$v.$invalid">Save</v-btn>
       </v-card-text>
     </v-card>
+
+    <v-snackbar v-model="isSaved" :timeout="5000">
+      <v-icon color="white">check</v-icon>
+      Setttings saved !
+      <v-btn color="primary" flat @click="isSaved = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </form>
 </template>
 
@@ -32,6 +40,7 @@ export default {
   name: "Settings",
   data() {
     return {
+      isSaved: false,
       fileNamePattern: localStorage.getItem(FILE_NAME_PATTERN)
     };
   },
@@ -53,6 +62,7 @@ export default {
   methods: {
     save: function() {
       localStorage.setItem(FILE_NAME_PATTERN, this.fileNamePattern);
+      this.isSaved = true;
     }
   }
 };
