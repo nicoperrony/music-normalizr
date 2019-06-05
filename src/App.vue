@@ -50,7 +50,7 @@
         <v-layout row pb-2>
           <v-flex xs10 offset-xs1>
             <transition name="fade" mode="out-in">
-              <router-view style="margin-top: -64px;"></router-view>
+              <router-view class="content"></router-view>
             </transition>
           </v-flex>
         </v-layout>
@@ -77,6 +77,9 @@ export default {
 </script>
 
 <style lang="scss">
+.content {
+  margin-top: -64px;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;

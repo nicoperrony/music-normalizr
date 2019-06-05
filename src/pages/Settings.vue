@@ -51,7 +51,7 @@ export default {
     }
   },
   methods: {
-    save() {
+    save: function() {
       localStorage.setItem(FILE_NAME_PATTERN, this.fileNamePattern);
     }
   }
