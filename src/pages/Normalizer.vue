@@ -43,17 +43,17 @@ export default {
     };
   },
   methods: {
-    isComplete: function(step) {
+    isComplete(step) {
       this.currentStep > step;
     },
-    previous: function() {
+    previous() {
       this.currentStep--;
     },
-    next: function() {
+    next() {
       this.currentStep++;
     },
-    normalize: function() {},
-    cancel: function() {
+    normalize() {},
+    cancel() {
       this.currentStep = 1;
     }
   }

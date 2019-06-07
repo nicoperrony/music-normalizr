@@ -60,7 +60,7 @@ export default {
     }
   },
   methods: {
-    save: function() {
+    save() {
       localStorage.setItem(FILE_NAME_PATTERN, this.fileNamePattern);
       this.isSaved = true;
     }

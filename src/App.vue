@@ -24,13 +24,7 @@
 
           <v-list-tile to="/settings">
             <v-list-tile-action>
-              <v-badge v-if="!hasSettings()" color="red">
-                <template v-slot:badge>
-                  <span>!</span>
-                </template>
-                <v-icon>settings</v-icon>
-              </v-badge>
-              <v-icon v-else>settings</v-icon>
+              <v-icon>settings</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -60,23 +54,18 @@
 </template>
 
 <script>
-import { DISCOGS_KEY, DISCOGS_SECRET } from "./storage";
-
 export default {
   name: "app",
   components: {},
   data() {
     return {
-      hasDrawer: false,
-      hasSettings: () =>
-        localStorage.getItem(DISCOGS_KEY) &&
-        localStorage.getItem(DISCOGS_SECRET)
+      hasDrawer: false
     };
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   margin-top: -64px;
 }
