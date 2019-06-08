@@ -10,7 +10,17 @@
         <small>Choose a folder to analyzed and processed</small>
       </v-stepper-step>
       <v-stepper-content step="1">
-        <v-btn color="primary" @click="next()" flat>Continue</v-btn>
+        <v-layout column align-center justify-center>
+          <FolderSelector @change="selectFolder($event)"></FolderSelector>
+        </v-layout>
+        <v-btn
+          color="primary"
+          @click="next()"
+          :disabled="selectedFolder == undefined"
+          flat
+        >
+          Continue
+        </v-btn>
       </v-stepper-content>
 
       <v-stepper-step :complete="isComplete(2)" step="2">
@@ -35,11 +45,15 @@
 </template>
 
 <script>
+import FolderSelector from "../components/FolderSelector.vue";
+
 export default {
   name: "Normalizer",
+  components: { FolderSelector },
   data() {
     return {
-      currentStep: 1
+      currentStep: 1,
+      selectedFolder: undefined
     };
   },
   methods: {
@@ -55,6 +69,9 @@ export default {
     normalize() {},
     cancel() {
       this.currentStep = 1;
+    },
+    selectFolder(folder) {
+      this.selectedFolder = folder;
     }
   }
 };
