@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <v-app>
-      <v-navigation-drawer v-model="hasDrawer" app disable-resize-watcher>
+      <v-navigation-drawer
+        v-model="hasDrawer"
+        app
+        disable-resize-watcher
+        temporary
+      >
         <v-list class="pa-1">
           <v-list-tile>
             <v-list-tile-content>
@@ -66,6 +71,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#app {
+  overflow: hidden;
+}
 .content {
   margin-top: -64px;
 }
