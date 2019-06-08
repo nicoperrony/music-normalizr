@@ -74,13 +74,20 @@ export default {
 #app {
   overflow: hidden;
 }
+
+.v-card {
+  height: 100%;
+}
+
 .content {
   margin-top: -64px;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
