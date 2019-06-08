@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <v-navigation-drawer v-model="hasDrawer" app>
+      <v-navigation-drawer v-model="hasDrawer" app disable-resize-watcher>
         <v-list class="pa-1">
           <v-list-tile>
             <v-list-tile-content>
