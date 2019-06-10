@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-list v-if="selectedFolder">
+    <v-list v-if="selectedFolder" two-line>
       <v-list-tile avatar>
         <v-list-tile-avatar>
           <v-icon class="accent white--text">folder</v-icon>
@@ -20,8 +20,8 @@
         </v-list-tile-action>
       </v-list-tile>
     </v-list>
-    <v-list v-else>
-      <v-list-tile @click="selectFolder()" avatar>
+    <v-list v-else two-line>
+      <v-list-tile @click="selectFolder()" avatar ripple>
         <v-list-tile-avatar>
           <v-icon x-large>add_circle_outline</v-icon>
         </v-list-tile-avatar>
@@ -72,5 +72,9 @@ export default {
 <style lang="scss" scoped>
 .v-card {
   width: 450px;
+}
+
+.v-list {
+  padding: 0;
 }
 </style>
