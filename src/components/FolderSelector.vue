@@ -42,10 +42,8 @@ import { FileSystem } from "../services/file-system";
 
 export default {
   name: "FolderSelector",
-  data() {
-    return {
-      selectedFolder: undefined
-    };
+  props: {
+    selectedFolder: undefined
   },
   methods: {
     selectFolder() {
@@ -55,15 +53,18 @@ export default {
         },
         folder => {
           if (folder) {
-            this.selectedFolder = FileSystem.getFolder(folder[0]);
-            this.$emit("change", this.selectedFolder);
+            // this.selectedFolder = FileSystem.getFolder(folder[0]);
+            this.$emit(
+              "update:selectedFolder",
+              FileSystem.getFolder(folder[0])
+            );
           }
         }
       );
     },
     unselectFolder() {
-      this.selectedFolder = undefined;
-      this.$emit("change", this.selectedFolder);
+      // this.selectedFolder = undefined;
+      this.$emit("update:selectedFolder", undefined);
     }
   }
 };

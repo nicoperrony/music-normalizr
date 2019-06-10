@@ -51,10 +51,12 @@
 <script>
 export default {
   name: "MusicSearch",
+  props: {
+    selectedAlbum: undefined
+  },
   data() {
     return {
       selectedAlbumId: undefined,
-      selectedAlbum: undefined,
       albums: [
         {
           id: 1,
@@ -82,11 +84,18 @@ export default {
   },
   methods: {
     selectAlbum(id) {
-      this.selectedAlbum = this.albums.find(album => album.id == id);
+      const album = this.albums.find(album => album.id == id);
+      this.$emit("update:selectedAlbum", album);
     },
     unselectAlbum() {
-      this.selectedAlbumId = undefined;
-      this.selectedAlbum = undefined;
+      this.$emit("update:selectedAlbum", undefined);
+    }
+  },
+  watch: {
+    selectedAlbum(newVal) {
+      if (newVal === undefined) {
+        this.selectedAlbumId = undefined;
+      }
     }
   }
 };
