@@ -10,7 +10,7 @@
       @input="selectAlbum"
     >
       <template v-slot:item="data">
-        <v-list-tile-avatar>
+        <v-list-tile-avatar tile>
           <img :src="data.item.cover" />
         </v-list-tile-avatar>
         <v-list-tile-content>
@@ -23,7 +23,7 @@
     <v-card>
       <v-list v-if="selectedAlbum" two-line>
         <v-list-tile avatar>
-          <v-list-tile-avatar>
+          <v-list-tile-avatar tile>
             <img :src="selectedAlbum.cover" />
           </v-list-tile-avatar>
           <v-list-tile-content>
