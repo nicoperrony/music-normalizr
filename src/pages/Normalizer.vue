@@ -33,7 +33,13 @@
             v-bind:selectedAlbum.sync="album"
           ></MusicAlbumSelector>
         </v-layout>
-        <v-btn color="primary" @click="next()" flat>Continue</v-btn>
+        <v-btn
+          color="primary"
+          @click="next()"
+          :disabled="album == undefined"
+          flat
+          >Continue</v-btn
+        >
         <v-btn @click="previous()" flat>Previous</v-btn>
       </v-stepper-content>
 
