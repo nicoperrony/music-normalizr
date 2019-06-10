@@ -38,6 +38,7 @@
 
 <script>
 import { remote } from "electron";
+import { FileSystem } from "../services/fileSystem";
 
 export default {
   name: "FolderSelector",
@@ -54,12 +55,7 @@ export default {
         },
         folder => {
           if (folder) {
-            this.selectedFolder = {
-              name: folder[0],
-              path: folder[0],
-              files: []
-            };
-
+            this.selectedFolder = FileSystem.getFolder(folder[0]);
             this.$emit("change", this.selectedFolder);
           }
         }
