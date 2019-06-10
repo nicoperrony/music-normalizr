@@ -38,7 +38,7 @@
 
 <script>
 import { remote } from "electron";
-import { FileSystem } from "../services/fileSystem";
+import { FileSystem } from "../services/file-system";
 
 export default {
   name: "FolderSelector",
