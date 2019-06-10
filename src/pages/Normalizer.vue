@@ -28,6 +28,9 @@
         <small>Find a music album corresponding to your files</small>
       </v-stepper-step>
       <v-stepper-content step="2">
+        <v-layout column align-center justify-center>
+          <MusicSearch></MusicSearch>
+        </v-layout>
         <v-btn color="primary" @click="next()" flat>Continue</v-btn>
         <v-btn @click="previous()" flat>Previous</v-btn>
       </v-stepper-content>
@@ -46,10 +49,11 @@
 
 <script>
 import FolderSelector from "../components/FolderSelector.vue";
+import MusicSearch from "../components/MusicSearch.vue";
 
 export default {
   name: "Normalizer",
-  components: { FolderSelector },
+  components: { FolderSelector, MusicSearch },
   data() {
     return {
       currentStep: 1,
