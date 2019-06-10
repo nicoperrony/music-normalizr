@@ -29,7 +29,9 @@
       </v-stepper-step>
       <v-stepper-content step="2">
         <v-layout column align-center justify-center>
-          <MusicSearch v-bind:selectedAlbum.sync="album"></MusicSearch>
+          <MusicAlbumSelector
+            v-bind:selectedAlbum.sync="album"
+          ></MusicAlbumSelector>
         </v-layout>
         <v-btn color="primary" @click="next()" flat>Continue</v-btn>
         <v-btn @click="previous()" flat>Previous</v-btn>
@@ -49,11 +51,11 @@
 
 <script>
 import FolderSelector from "../components/FolderSelector.vue";
-import MusicSearch from "../components/MusicSearch.vue";
+import MusicAlbumSelector from "../components/MusicAlbumSelector.vue";
 
 export default {
   name: "Normalizer",
-  components: { FolderSelector, MusicSearch },
+  components: { FolderSelector, MusicAlbumSelector },
   data() {
     return {
       currentStep: 1,

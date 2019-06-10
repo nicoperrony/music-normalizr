@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "MusicSearch",
+  name: "MusicAlbumSelector",
   props: {
     selectedAlbum: undefined
   },
