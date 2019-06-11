@@ -20,7 +20,7 @@ axios.interceptors.request.use(function(config) {
 export class Discogs {
   static async searchAlbum(query) {
     try {
-      const response = await axios.get(DISCOGS_URL + "/database/search", {
+      const response = await axios.get(`${DISCOGS_URL}/database/search`, {
         params: {
           q: query,
           type: "master"
@@ -29,6 +29,15 @@ export class Discogs {
       return Discogs._parseAlbum(response.data);
     } catch (error) {
       return [];
+    }
+  }
+
+  static async getAlbumTracklist(id) {
+    try {
+      const response = await axios.get(`${DISCOGS_URL}/masters/${id}`);
+      return Discogs._parseAlbum(response.data);
+    } catch (error) {
+      return undefined;
     }
   }
 
