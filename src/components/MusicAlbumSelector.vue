@@ -5,7 +5,10 @@
       :items="albums"
       :search-input.sync="search"
       :loading="isLoading"
-      :return-object="true"
+      :disabled="selectedAlbum"
+      ref="autocomplete"
+      return-object
+      no-filter
       color="primary lighten-2"
       label="Album"
       item-text="title"
@@ -26,7 +29,7 @@
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title>{{ data.item.title }}</v-list-tile-title>
-          <v-list-tile-sub-title>{{ data.item.year }}</v-list-tile-sub-title>
+          <v-list-tile-sub-title>{{ data.item.artist }}</v-list-tile-sub-title>
         </v-list-tile-content>
       </template>
     </v-autocomplete>
@@ -74,13 +77,18 @@ export default {
   },
   methods: {
     selectAlbum() {
-      Discogs.getAlbumDetails(this.album.id).then(details => {
-        const albumDetailed = {
-          ...this.album,
-          ...details
-        };
-        this.$emit("update:selectedAlbum", albumDetailed);
-      });
+      Discogs.getAlbumDetails(this.album.id)
+        .then(details => {
+          const albumDetailed = {
+            ...this.album,
+            ...details
+          };
+
+          this.$emit("update:selectedAlbum", albumDetailed);
+        })
+        .finally(() => {
+          this.$refs.autocomplete.blur();
+        });
     },
     unselectAlbum() {
       this.$emit("update:selectedAlbum", undefined);
@@ -94,7 +102,7 @@ export default {
       }
     },
     search: _.debounce(function() {
-      if (this.search) {
+      if (this.search && this.selectedAlbum == undefined) {
         this.isLoading = true;
         Discogs.searchAlbum(this.search)
           .then(
