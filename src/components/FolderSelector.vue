@@ -53,7 +53,6 @@ export default {
         },
         folder => {
           if (folder) {
-            // this.selectedFolder = FileSystem.getFolder(folder[0]);
             this.$emit(
               "update:selectedFolder",
               FileSystem.getFolder(folder[0])
@@ -63,7 +62,6 @@ export default {
       );
     },
     unselectFolder() {
-      // this.selectedFolder = undefined;
       this.$emit("update:selectedFolder", undefined);
     }
   }

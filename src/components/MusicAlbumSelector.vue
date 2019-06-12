@@ -40,7 +40,7 @@
           <v-list-tile-content>
             <v-list-tile-title>{{ selectedAlbum.title }}</v-list-tile-title>
             <v-list-tile-sub-title>{{
-              selectedAlbum.year
+              selectedAlbum.artist
             }}</v-list-tile-sub-title>
           </v-list-tile-content>
 
@@ -74,7 +74,13 @@ export default {
   },
   methods: {
     selectAlbum() {
-      this.$emit("update:selectedAlbum", this.album);
+      Discogs.getAlbumDetails(this.album.id).then(details => {
+        const albumDetailed = {
+          ...this.album,
+          ...details
+        };
+        this.$emit("update:selectedAlbum", albumDetailed);
+      });
     },
     unselectAlbum() {
       this.$emit("update:selectedAlbum", undefined);
@@ -88,14 +94,19 @@ export default {
       }
     },
     search: _.debounce(function() {
-      if (this.search && this.selectedAlbum == undefined) {
+      if (this.search) {
         this.isLoading = true;
-        Discogs.searchAlbum(this.search).then(
-          function(res) {
-            this.albums = res;
-            this.isLoading = false;
-          }.bind(this)
-        );
+        Discogs.searchAlbum(this.search)
+          .then(
+            function(result) {
+              this.albums = result;
+            }.bind(this)
+          )
+          .finally(
+            function() {
+              this.isLoading = false;
+            }.bind(this)
+          );
       }
     }, 1000)
   }

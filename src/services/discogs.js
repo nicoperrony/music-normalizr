@@ -32,10 +32,16 @@ export class Discogs {
     }
   }
 
-  static async getAlbumTracklist(id) {
+  static async getAlbumDetails(id) {
     try {
       const response = await axios.get(`${DISCOGS_URL}/masters/${id}`);
-      return Discogs._parseAlbum(response.data);
+
+      return {
+        artist: response.data.artists[0].name,
+        title: response.data.title,
+        genres: response.data.genres,
+        tracklist: response.data.tracklist
+      };
     } catch (error) {
       return undefined;
     }
@@ -44,10 +50,13 @@ export class Discogs {
   static _parseAlbum(data) {
     return data.results.reduce((albums, row) => {
       if (row.type == "master") {
+        const releaseTitle = row.title.split(" - ");
+
         albums.push({
           id: row.id,
           cover: row.cover_image,
-          title: row.title,
+          artist: releaseTitle[0],
+          title: releaseTitle[1],
           year: row.year
         });
       }
