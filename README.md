@@ -1,6 +1,8 @@
 # Music Normalizr
 
-Music Normalizr is an app to rename and complete music informations (ID3 Tag) for your audio files corresponding to an music album
+Music Normalizr is an app to rename and complete music informations (ID3 Tag) for your audio files corresponding to an music album.
+
+**_This application is in progress._**
 
 ## Getting Started
 
@@ -8,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-This app needs **NodeJS** to work.
+This app needs **NodeJS** to launch from source code.
 
 ### Installing
 
