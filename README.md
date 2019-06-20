@@ -1,29 +1,40 @@
-# music_normalizr
+# Music Normalizr
 
-## Project setup
-```
-npm install
-```
+Music Normalizr is an app to rename and complete music informations (ID3 Tag) for your audio files corresponding to an music album
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Getting Started
 
-### Compiles and minifies for production
-```
-npm run build
-```
+These instructions will get you a copy of the project up and running on your local machine for development.
 
-### Run your tests
-```
-npm run test
-```
+### Prerequisites
 
-### Lints and fixes files
-```
-npm run lint
-```
+This app needs **NodeJS** to work.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Installing
+
+To run the app clone or download the repository and follow the instructions bellow :
+
+1. Install dependencies
+
+   ```
+   npm install
+   ```
+
+2. Run application locally in development mode
+
+   ```
+   npm run electron:serve
+   ```
+
+## Built With
+
+- [Vuejs](https://vuejs.org/) - Web framework
+- [Electron](https://electronjs.org/) - Desktop application cross platform framework
+
+## Authors
+
+- **Nicolas perrony** - [nicoperrony](https://github.com/nicoperrony)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
