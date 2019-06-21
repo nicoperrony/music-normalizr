@@ -5,7 +5,7 @@
       :items="albums"
       :search-input.sync="search"
       :loading="isLoading"
-      :disabled="selectedAlbum"
+      :disabled="selectedAlbum != undefined"
       ref="autocomplete"
       return-object
       no-filter
@@ -78,12 +78,7 @@ export default {
   methods: {
     selectAlbum() {
       Discogs.getAlbumDetails(this.album.id)
-        .then(details => {
-          const albumDetailed = {
-            ...this.album,
-            ...details
-          };
-
+        .then(albumDetailed => {
           this.$emit("update:selectedAlbum", albumDetailed);
         })
         .finally(() => {

@@ -26,7 +26,7 @@ export class Discogs {
           type: "master"
         }
       });
-      return Discogs._parseAlbum(response.data);
+      return Discogs._parseAlbums(response.data);
     } catch (error) {
       return [];
     }
@@ -37,9 +37,12 @@ export class Discogs {
       const response = await axios.get(`${DISCOGS_URL}/masters/${id}`);
 
       return {
+        id: id,
+        cover: response.data.images[0].resource_url,
         artist: response.data.artists[0].name,
         title: response.data.title,
         genres: response.data.genres,
+        year: response.data.year,
         tracklist: response.data.tracklist
       };
     } catch (error) {
@@ -47,7 +50,7 @@ export class Discogs {
     }
   }
 
-  static _parseAlbum(data) {
+  static _parseAlbums(data) {
     return data.results.reduce((albums, row) => {
       if (row.type == "master") {
         const releaseTitle = row.title.split(" - ");
@@ -57,6 +60,7 @@ export class Discogs {
           cover: row.cover_image,
           artist: releaseTitle[0],
           title: releaseTitle[1],
+          genres: row.genre,
           year: row.year
         });
       }
