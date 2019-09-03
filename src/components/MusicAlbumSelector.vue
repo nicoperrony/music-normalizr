@@ -60,7 +60,7 @@
 
 <script>
 import { Discogs } from "../services/discogs";
-import _ from "lodash";
+import { Utils } from "../services/utils";
 
 export default {
   name: "MusicAlbumSelector",
@@ -96,7 +96,7 @@ export default {
         this.albums = [];
       }
     },
-    search: _.debounce(function() {
+    search: Utils.debounce(function() {
       if (this.search && this.selectedAlbum == undefined) {
         this.isLoading = true;
         Discogs.searchAlbum(this.search)
