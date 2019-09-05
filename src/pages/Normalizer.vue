@@ -58,6 +58,7 @@
 <script>
 import FolderSelector from "../components/FolderSelector.vue";
 import MusicAlbumSelector from "../components/MusicAlbumSelector.vue";
+import { Normalizr } from "../services/normalizr";
 
 export default {
   name: "Normalizer",
@@ -79,7 +80,9 @@ export default {
     next() {
       this.currentStep++;
     },
-    normalize() {},
+    normalize() {
+      Normalizr.process(this.folder, this.album);
+    },
     cancel() {
       this.currentStep = 1;
       this.folder = undefined;

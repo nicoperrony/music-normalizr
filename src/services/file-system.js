@@ -1,7 +1,7 @@
 import { readdirSync } from "fs";
 import { extname, sep } from "path";
 
-const FILE_EXTENSIONS = new Set([".flac", ".mp3"]);
+const FILE_EXTENSIONS = new Set([".mp3"]);
 
 export class FileSystem {
   static getFolder(path) {

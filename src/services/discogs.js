@@ -43,7 +43,7 @@ export class Discogs {
         title: response.data.title,
         genres: response.data.genres,
         year: response.data.year,
-        tracklist: response.data.tracklist
+        tracklist: Discogs._parseTracklist(response.data.tracklist)
       };
     } catch (error) {
       return undefined;
@@ -66,6 +66,30 @@ export class Discogs {
       }
 
       return albums;
+    }, []);
+  }
+
+  static _parseTracklist(data) {
+    return data.map(track => {
+      const extraArtists = Discogs._parseExtraArtist(track.extraartists);
+
+      return { ...track, extraartists: extraArtists };
+    });
+  }
+
+  static _parseExtraArtist(data) {
+    return data.reduce((artists, artist) => {
+      if (artist.role === "Featuring") {
+        const cloneTagMatched = artist.name.match(/\([0-9]\)/i);
+        let clearedName = artist.name;
+        if (cloneTagMatched) {
+          clearedName = artist.name.replace(cloneTagMatched[0], "").trim();
+        }
+
+        artists.push(clearedName);
+      }
+
+      return artists;
     }, []);
   }
 }
