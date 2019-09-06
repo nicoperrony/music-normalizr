@@ -70,10 +70,10 @@ export class Discogs {
   }
 
   static _parseTracklist(data) {
-    return data.map(track => {
+    return data.map((track, index) => {
       const extraArtists = Discogs._parseExtraArtist(track.extraartists);
 
-      return { ...track, extraartists: extraArtists };
+      return { ...track, extraartists: extraArtists, position: index + 1 };
     });
   }
 

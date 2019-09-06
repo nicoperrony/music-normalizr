@@ -7,7 +7,7 @@ export class Storage {
     if (!localStorage.getItem(FILE_NAME_PATTERN)) {
       localStorage.setItem(
         FILE_NAME_PATTERN,
-        "[track-num]. [artist] feat [featuring] - [title]"
+        "[position]. [artist] [featuring] - [title]"
       );
     }
   }
