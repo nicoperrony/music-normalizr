@@ -33,8 +33,6 @@ export class Normalizr {
 
           NodeID3.write(tags, filePath);
 
-          console.log(track);
-
           Normalizr._renameAudioFile(filePath, album, track);
         }
 
@@ -62,9 +60,6 @@ export class Normalizr {
         .replace(/ +(?= )/g, "") + extension;
 
     const newFilePath = path.join(path.dirname(filePath), newFileName);
-    console.log(filePath);
-    console.log(newFileName);
-    console.log(newFilePath);
 
     fs.renameSync(filePath, newFilePath);
   }
